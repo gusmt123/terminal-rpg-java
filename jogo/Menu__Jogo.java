@@ -15,6 +15,21 @@ public class Menu__Jogo {
         this.posicao = posicao;
     }
 
+    public void mudarPosicao(String localizacao)
+    {
+        if (localizacao.equals("floresta")) {
+            posicao = new Floresta("Floresta");
+        } else if (localizacao.equals("caverna")) {
+            posicao = new Caverna("Caverna");
+        } else if (localizacao.equals("castelo")) {
+            posicao = new Castelo("Castelo");
+        } else if (localizacao.equals("vilarejo")) {
+            posicao = new Vilarejo("Vilarejo");
+        } else if (localizacao.equals("torre")) {
+            posicao = new Torre("Torre");
+        }
+    }
+
     public void Menu_Jogo()
     {
         boolean continuar_jogando = true;
@@ -45,11 +60,14 @@ public class Menu__Jogo {
                     break;
 
                 case "3":
-
+                    posicao.interagir_local();
                     break;
 
                 case "4":
-
+                    String localizacao = posicao.locomover();
+                    mudarPosicao(localizacao);
+                    
+                    
                     break;
 
                 case "5":
