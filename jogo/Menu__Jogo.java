@@ -18,15 +18,15 @@ public class Menu__Jogo {
     public void mudarPosicao(String localizacao)
     {
         if (localizacao.equals("floresta")) {
-            posicao = new Floresta("Floresta");
+            posicao = new Floresta("Floresta", inventario);
         } else if (localizacao.equals("caverna")) {
-            posicao = new Caverna("Caverna");
+            posicao = new Caverna("Caverna", inventario);
         } else if (localizacao.equals("castelo")) {
-            posicao = new Castelo("Castelo");
+            posicao = new Castelo("Castelo", inventario);
         } else if (localizacao.equals("vilarejo")) {
-            posicao = new Vilarejo("Vilarejo");
+            posicao = new Vilarejo("Vilarejo", inventario);
         } else if (localizacao.equals("torre")) {
-            posicao = new Torre("Torre");
+            posicao = new Torre("Torre", inventario);
         }
     }
 

@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Castelo extends Local {
 
-
-    public Castelo(String nome){
+    private Inventario inventario;  
+    
+    public Castelo(String nome, Inventario inventario){
         super(nome);
+        this.inventario = inventario;
     }
 
 

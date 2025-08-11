@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 public class Torre extends Local{
     
-    public Torre(String nome){
+    private Inventario inventario;
+
+    public Torre(String nome, Inventario inventario){
         super(nome);
+        this.inventario = inventario;
     }
 
     @Override

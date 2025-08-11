@@ -56,7 +56,7 @@ public class Menu_Inicial {
 
     public void criar_Jogo(){
         Inventario inventario = new Inventario();
-        Posicao posicao = new Floresta("Floresta");
+        Posicao posicao = new Floresta("Floresta", inventario);
         Menu__Jogo menu_jogo = new Menu__Jogo(inventario, posicao);
         menu_jogo.Menu_Jogo();
     }

@@ -4,8 +4,12 @@ import java.util.Scanner;
 
 public class Caverna extends Local {
 
-    public Caverna(String nome) {
+    private Scanner scanner = new Scanner(System.in);
+    private Inventario inventario;
+
+    public Caverna(String nome, Inventario inventario){ 
         super(nome);
+        this.inventario = inventario;
     }
 
 

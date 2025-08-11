@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 public class Vilarejo extends Local implements Posicao{
 
-    public Vilarejo(String nome){
+    private Inventario inventario;
+
+    public Vilarejo(String nome, Inventario inventario){
         super(nome);
+        this.inventario = inventario;
     }
 
 
