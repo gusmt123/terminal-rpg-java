@@ -7,6 +7,8 @@ public class Menu_Inicial {
     private Scanner scanner;
     private Local local;
     private Inventario inventario;
+    private Personagem jogador;
+
 
     public Menu_Inicial(){
         scanner = new Scanner(System.in);
@@ -57,7 +59,11 @@ public class Menu_Inicial {
     public void criar_Jogo(){
         Inventario inventario = new Inventario();
         Posicao posicao = new Floresta("Floresta", inventario);
-        Menu__Jogo menu_jogo = new Menu__Jogo(inventario, posicao);
+        String nome_jogador;
+        System.out.println("Digite o seu nome:");
+        nome_jogador = scanner.nextLine();
+        jogador = new Personagem(20,5,1,nome_jogador);
+        Menu__Jogo menu_jogo = new Menu__Jogo(inventario, posicao, jogador);
         menu_jogo.Menu_Jogo();
     }
 

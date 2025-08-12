@@ -1,4 +1,7 @@
 package jogo;
+
+import java.util.Scanner;
+
 public class Combate {
     private Inventario inventario;
     private Personagem jogador, adversario;
@@ -9,27 +12,86 @@ public class Combate {
         this.adversario = adversario;
     }   
 
-    public void usaItem(Item item) {
-        inventario.mostrarItens();
-        int num_item = 1;
-        for (Item i : inventario.getItens()) {
-            if (i.getNome().equals(item.getNome())) {
-                if(i.getNome().equals("poção")){
-                    System.out.println("Você usou uma poção e recuperou 10 de HP!");
-                    jogador.hp += 10;
-                    if(jogador.hp > 100) {
-                        jogador.hp = 100; // Limita o HP máximo a 100
-                    }
-                } else if(i.getNome().equals("espada")) {
-                    System.out.println("Você empunhou a espada!");
-                    adversario.hp -= 2 * jogador.ataque; // Aumenta o ataque do jogador
-                    System.out.println("O " + adversario.nome + " está com" + adversario.hp + " de HP.");    
+    public void menu_Combate(){
+
+        boolean continuar_combate = true;
+
+        while(continuar_combate){
+
+        System.out.println("Você está em combate com " + adversario.nome);
+        System.out.println("HP do " + adversario.nome + ": " + adversario.hp);
+        System.out.println("HP do " + jogador.nome + ": " + jogador.hp);
+        System.out.println("Selecione uma ação:");
+        System.out.println("1. Atacar");
+        System.out.println("2. Usar item");
+        System.out.println("3. Fugir");
+
+        Scanner scanner = new Scanner(System.in);
+        String opcao = scanner.nextLine();
+
+        switch (opcao) {
+            case "1":
+                adversario.hp -= jogador.ataque;
+                if(verificarVitoria()) {
+                    continuar_combate = false;
+                    break;
                 }
-                return;
-            }
-            num_item++;
+                jogador.hp -= adversario.ataque;
+                if(verificarVitoria()) {
+                    continuar_combate = false;
+                    break;
+                }
+                System.out.println("Você atacou o " + adversario.nome + " e causou " + jogador.ataque + " de dano.");
+                break;
+            case "2":
+                usarItem();
+                verificarVitoria();
+                jogador.hp -= adversario.ataque;
+                verificarVitoria();
+                break;
+            case "3":
+                System.out.println("Você fugiu do combate!");
+                continuar_combate = false;
+                break;
+            default:
+                System.out.println("Opção inválida, tente novamente.");
+                menu_Combate();
         }
+    }
+    }
 
-    }   
+    public void usarItem() {
+        inventario.mostrarItens();
+        System.out.println("Digite o nome do item que deseja usar:");
+        Scanner scanner = new Scanner(System.in);
+        String nomeItem = scanner.nextLine();
+        int num_item = 1;
 
-}
+        if (nomeItem.equals("poção")) {
+                System.out.println("Você usou uma poção e recuperou 10 de HP!");
+                jogador.hp += 10;
+                if(jogador.hp > 100) {
+                    jogador.hp = 100; // Limita o HP máximo a 100
+                }
+                num_item--;
+            } else if(nomeItem.equals("espada")) {
+                System.out.println("Você empunhou a espada!");
+                adversario.hp -= 2 * jogador.ataque; // Aumenta o ataque do jogador
+                System.out.println("O " + adversario.nome + " está com " + adversario.hp + " de HP.");    
+                verificarVitoria();
+            }
+            return;
+        }
+    public boolean verificarVitoria() {
+        if (adversario.hp <= 0) {
+            System.out.println("Você derrotou o " + adversario.nome + "!");
+            return true;
+        } else if (jogador.hp <= 0) {
+            System.out.println("Você foi derrotado pelo " + adversario.nome + "...");
+            return true;
+        }
+        return false;
+    }
+}   
+
+

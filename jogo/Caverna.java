@@ -6,10 +6,12 @@ public class Caverna extends Local {
 
     private Scanner scanner = new Scanner(System.in);
     private Inventario inventario;
+    private Personagem jogador;
 
-    public Caverna(String nome, Inventario inventario){ 
+    public Caverna(String nome, Inventario inventario, Personagem jogador){ 
         super(nome);
         this.inventario = inventario;
+        this.jogador = jogador;
     }
 
 
@@ -40,7 +42,8 @@ public class Caverna extends Local {
             case "2":
                 System.out.println("Você se deparou com um monstro! Prepare-se para lutar!");
                 Personagem monstro = new Personagem(20, 3, 1, "Monstro");
-                
+                Combate combate = new Combate(inventario, jogador , monstro);
+                combate.menu_Combate();
                 // Aqui você pode adicionar lógica para lutar contra o monstro
                 break;
             default:

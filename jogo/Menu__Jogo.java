@@ -7,12 +7,14 @@ public class Menu__Jogo {
     private Inventario inventario;
     private Posicao posicao;
     private Scanner scanner;
+    private Personagem jogador;
 
-    public Menu__Jogo(Inventario inventario, Posicao posicao)
+    public Menu__Jogo(Inventario inventario, Posicao posicao, Personagem jogador)
     {
         scanner = new Scanner(System.in);
         this.inventario = inventario;
         this.posicao = posicao;
+        this.jogador = jogador;
     }
 
     public void mudarPosicao(String localizacao)
@@ -20,7 +22,7 @@ public class Menu__Jogo {
         if (localizacao.equals("floresta")) {
             posicao = new Floresta("Floresta", inventario);
         } else if (localizacao.equals("caverna")) {
-            posicao = new Caverna("Caverna", inventario);
+            posicao = new Caverna("Caverna", inventario, jogador);
         } else if (localizacao.equals("castelo")) {
             posicao = new Castelo("Castelo", inventario);
         } else if (localizacao.equals("vilarejo")) {
