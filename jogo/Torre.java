@@ -4,15 +4,46 @@ import java.util.Scanner;
 
 public class Torre extends Local{
     
+    private Personagem jogador;
     private Inventario inventario;
+    private Scanner scanner = new Scanner(System.in);
 
-    public Torre(String nome, Inventario inventario){
+    public Torre(String nome, Inventario inventario, Personagem jogador){
         super(nome);
         this.inventario = inventario;
+        this.jogador = jogador;
     }
 
     @Override
     public void interagir_local(){
+        System.out.println("Escolha uma opção a seguir:");
+        System.out.println("1. Procurar por itens");
+        System.out.println("2. Lutar com um dragão");
+
+        String opcao = scanner.nextLine();
+
+        switch (opcao) {
+            case "1":
+                    boolean possuiPocao = inventario.getItens().stream()
+                    .anyMatch(item -> item.getNome().equalsIgnoreCase("Poção"));
+
+                if(possuiPocao) {
+                    System.out.println("Você já achou todos os itens aqui.");
+                    return;
+                }   
+                break;
+        
+            case "2":
+                System.out.println("Você se deparou com um dragão! Prepare-se para lutar!");
+                Personagem dragao = new Personagem(30, 7, 5, "Dragão");
+                Combate combate = new Combate(inventario, jogador, dragao);
+                combate.menu_Combate();
+                break;
+
+            default:
+                break;
+        }
+
 
     }
 

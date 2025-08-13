@@ -28,7 +28,7 @@ public class Menu__Jogo {
         } else if (localizacao.equals("vilarejo")) {
             posicao = new Vilarejo("Vilarejo", inventario);
         } else if (localizacao.equals("torre")) {
-            posicao = new Torre("Torre", inventario);
+            posicao = new Torre("Torre", inventario, jogador);
         }
     }
 

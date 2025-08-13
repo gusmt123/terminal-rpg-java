@@ -7,15 +7,15 @@ public class Inventario {
     private List<Item> itens;
 
     public List<Item> getItens() {
-        return itens; // ✅ corrigido: método getter para acessar a lista de itens
+        return itens;
     }
 
-    public Inventario() { // ✅ corrigido: método construtor com parênteses
+    public Inventario() {
         itens = new ArrayList<>();
     }
 
     public void adicionarItem(Item item) {
-        itens.add(item); // ✅ adicionando objetos do tipo Item
+        itens.add(item);
     }
 
     public int contar_Item(String nome) {
@@ -25,7 +25,7 @@ public class Inventario {
                 quantidade++;
             }
         }
-        return quantidade; // ✅ retornando a quantidade de itens
+        return quantidade;
     }
 
     public void mostrarItens() {
@@ -34,21 +34,36 @@ public class Inventario {
             return;
         }
 
-        boolean poçãoMostrada = false;
+        // Categorias configuráveis: escalável e fácil de modificar
+        List<String> itensEmpilhaveis = List.of("Pocao", "Flecha", "Bala");
+        List<String> itensUnicos = List.of("Espada", "Escudo", "Chave");
 
+        List<String> exibidos = new ArrayList<>();
+
+        // Mostrar itens empilháveis com quantidade
+        for (String nome : itensEmpilhaveis) {
+            int quantidade = contar_Item(nome);
+            if (quantidade > 0) {
+                System.out.println(quantidade + " x " + nome);
+                exibidos.add(nome);
+            }
+        }
+
+        // Mostrar itens únicos apenas uma vez
+        for (String nome : itensUnicos) {
+            if (contar_Item(nome) > 0 && !exibidos.contains(nome)) {
+                System.out.println(nome);
+                exibidos.add(nome);
+            }
+        }
+
+        // Mostrar qualquer item não listado nas categorias anteriores
         for (Item item : itens) {
             String nome = item.getNome();
-
-            if (nome.equalsIgnoreCase("Espada")) {
-                System.out.println("- Espada!");
-            } 
-            else if (nome.equalsIgnoreCase("Poção") && !poçãoMostrada) {
-                int quantidadePoção = contar_Item("Poção");
-                System.out.println("- Poção! Quantidade: " + quantidadePoção);
-                poçãoMostrada = true; // garante que só imprime uma vez
-            } 
-            // Caso queira mostrar outros itens também, adicione mais condições aqui
+            if (!exibidos.contains(nome)) {
+                System.out.println(nome);
+                exibidos.add(nome);
+            }
         }
     }
-
 }

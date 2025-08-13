@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Vilarejo extends Local implements Posicao{
 
     private Inventario inventario;
+    private Scanner scanner = new Scanner(System.in);
 
     public Vilarejo(String nome, Inventario inventario){
         super(nome);
@@ -14,7 +15,19 @@ public class Vilarejo extends Local implements Posicao{
 
     @Override
     public void interagir_local(){
+        System.out.println("Escolha uma opção a seguir:");
+        System.out.println("1. Conversar com uma pessoa");
+        
+        String opcao = scanner.nextLine();
 
+        switch (opcao) {
+            case "1":
+                System.out.println("Voocê encontrou um aldeão. Ele lhe contou sobre a história do vilarejo");
+                break;
+        
+            default:
+                break;
+        }
     }
 
     @Override
