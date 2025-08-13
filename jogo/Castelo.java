@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Castelo extends Local {
 
-    private Inventario inventario;  
+    private Inventario inventario;
+    private Scanner scanner = new Scanner(System.in);  
     
     public Castelo(String nome, Inventario inventario){
         super(nome);
@@ -15,6 +16,25 @@ public class Castelo extends Local {
 
     @Override
     public void interagir_local(){
+        System.out.println("Escolha uma das opcoes abaixo:");
+        System.out.println("1. Procurar por itens");
+        System.out.println("2. Voltar");
+
+        String opcao = scanner.nextLine();
+
+        switch (opcao) {
+            case "1":
+                inventario.adicionarItem(new Item("Escudo"));
+                System.out.println("Você encontrou um escudo no castelo!");
+                break;
+        
+            case "2":
+                System.out.println("Você decidiu voltar.");
+                return; // Retorna para o menu anterior ou encerra a interação
+            default:
+                break;
+        }
+
 
     }
 

@@ -7,6 +7,7 @@ public class Caverna extends Local {
     private Scanner scanner = new Scanner(System.in);
     private Inventario inventario;
     private Personagem jogador;
+    private boolean monstro_Presente = true;
 
     public Caverna(String nome, Inventario inventario, Personagem jogador){ 
         super(nome);
@@ -40,10 +41,14 @@ public class Caverna extends Local {
                 System.out.println("Você encontrou uma poção na caverna!");
                 break;
             case "2":
+                
+                if(monstro_Presente){
                 System.out.println("Você se deparou com um monstro! Prepare-se para lutar!");
                 Personagem monstro = new Personagem(20, 3, 1, "Monstro");
                 Combate combate = new Combate(inventario, jogador , monstro);
                 combate.menu_Combate();
+                }
+                monstro_Presente = false;
                 // Aqui você pode adicionar lógica para lutar contra o monstro
                 break;
             default:
