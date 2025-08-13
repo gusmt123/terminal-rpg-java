@@ -73,7 +73,8 @@ public class Menu__Jogo {
                     break;
 
                 case "5":
-
+                    Gerenciador_Salvar salvador = new Gerenciador_Salvar();
+                    salvador.salvar_jogo(jogador, inventario, ((Local) posicao).get_Nome().toLowerCase());
                     break;
 
                 case "6":

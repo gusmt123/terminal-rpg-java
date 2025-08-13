@@ -35,7 +35,7 @@ public class Menu_Inicial {
                     break;
 
                 case "2":
-                    abrir_Jogo();
+                    abrir_Jogo();                   
                     break;
 
                 case "3":
@@ -52,9 +52,42 @@ public class Menu_Inicial {
 
     }
 
-    public void abrir_Jogo(){
+        public void abrir_Jogo() {
+            
+        Gerenciador_Salvar gerenciador = new Gerenciador_Salvar();
+        Gerenciador_Salvar.JogoSalvo dados = gerenciador.carregar_Jogo();
 
-    }
+        if (dados == null) {
+            System.out.println("Falha ao carregar o jogo salvo.");
+            return;
+        }
+
+        Posicao posicao = null;
+        switch (dados.localAtual.toLowerCase()) {
+            case "floresta":
+                posicao = new Floresta("Floresta", dados.inventario);
+                break;
+            case "castelo":
+                posicao = new Castelo("Castelo", dados.inventario);
+                break;
+            case "caverna":
+                posicao = new Caverna("Caverna", dados.inventario, dados.jogador);
+                break;
+            case "vilarejo":
+                posicao = new Vilarejo("Vilarejo", dados.inventario);
+                break;
+            case "torre":
+                posicao = new Torre("Torre", dados.inventario, dados.jogador);
+                break;
+            default:
+                System.out.println("Local desconhecido no save.");
+                return;
+        }
+
+        Menu__Jogo menu = new Menu__Jogo(dados.inventario, posicao, dados.jogador);
+        menu.Menu_Jogo();
+}
+
 
     public void criar_Jogo(){
         Inventario inventario = new Inventario();
