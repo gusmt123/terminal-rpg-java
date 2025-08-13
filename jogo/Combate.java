@@ -49,6 +49,8 @@ public class Combate {
                 jogador.hp -= adversario.ataque;
                 if(verificarVitoria()) {
                     continuar_combate = false;
+                    Menu_Derrota menu_derrota = new Menu_Derrota();
+                    menu_derrota.exibir_Menu_Derrota();
                     break;
                 }
                 System.out.println("Você atacou o " + adversario.nome + " e causou " + dano + " de dano.");
