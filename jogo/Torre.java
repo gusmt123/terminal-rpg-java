@@ -24,15 +24,9 @@ public class Torre extends Local{
 
         switch (opcao) {
             case "1":
-                    boolean possuiPocao = inventario.getItens().stream()
-                    .anyMatch(item -> item.getNome().equalsIgnoreCase("Poção"));
-
-                if(possuiPocao) {
-                    System.out.println("Você já achou todos os itens aqui.");
-                    return;
-                }   
+                inventario.adicionarItem(new Item("Poção"));
+                System.out.println("Você encontrou uma poção na torre!");
                 break;
-        
             case "2":
                 System.out.println("Você se deparou com um dragão! Prepare-se para lutar!");
                 Personagem dragao = new Personagem(30, 7, 5, "Dragão");
