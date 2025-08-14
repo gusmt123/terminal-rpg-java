@@ -90,8 +90,18 @@ public class Combate {
                 if(jogador.hp > 100) {
                     jogador.hp = 100; // Limita o HP máximo a 100
                 }
-                inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Poção"));
-            } else if(nomeItem.equals("Espada")) {
+                inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Pocao"));
+            }else if(nomeItem.equals("Pocao de ataque")) {
+                System.out.println("Você usou uma poção de ataque e aumentou seu ataque em 2!");
+                jogador.ataque += 2; // Aumenta o ataque do jogador
+                inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Poção de ataque"));
+            } else if(nomeItem.equals("Armadura")) {
+                System.out.println("Você vestiu a armadura e aumentou sua defesa!");
+                jogador.defesa += 2; // Aumenta a defesa do jogador
+                inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Armadura"));
+            }
+            
+            else if(nomeItem.equals("Espada")) {
                 System.out.println("Você empunhou a espada!");
                 adversario.hp -= 2 * jogador.ataque; // Aumenta o ataque do jogador
                 System.out.println("O " + adversario.nome + " está com " + adversario.hp + " de HP.");    

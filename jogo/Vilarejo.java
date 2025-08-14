@@ -16,7 +16,8 @@ public class Vilarejo extends Local implements Posicao{
     @Override
     public void interagir_local(){
         System.out.println("Escolha uma opção a seguir:");
-        System.out.println("1. Conversar com uma pessoa");
+        System.out.println("1. Conversar com um aldeão");
+        System.out.println("2. Procurar por itens no vilarejo");
         
         String opcao = scanner.nextLine();
 
@@ -24,7 +25,10 @@ public class Vilarejo extends Local implements Posicao{
             case "1":
                 System.out.println("Voocê encontrou um aldeão. Ele lhe contou sobre a história do vilarejo");
                 break;
-        
+            case "2":
+                inventario.adicionarItem(new Item("Poção de ataque"));
+                System.out.println("Você encontrou uma poção de ataque no vilarejo!");
+                break;
             default:
                 break;
         }
