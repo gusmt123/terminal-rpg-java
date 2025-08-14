@@ -35,8 +35,8 @@ public class Inventario {
         }
 
         // Categorias configuráveis: escalável e fácil de modificar
-        List<String> itensEmpilhaveis = List.of("Pocao", "Flecha", "Bala");
-        List<String> itensUnicos = List.of("Espada", "Escudo", "Chave");
+        List<String> itensEmpilhaveis = List.of("Poção","Poção de ataque");
+        List<String> itensUnicos = List.of("Espada", "Escudo");
 
         List<String> exibidos = new ArrayList<>();
 

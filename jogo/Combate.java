@@ -41,7 +41,7 @@ public class Combate {
         switch (opcao) {
             case "1":
                 int dano = danoAtaque(jogador.ataque);
-                adversario.hp -= dano;
+                adversario.hp -= (dano / Math.floor((jogador.defesa / 2)));
                 if(verificarVitoria()) {
                     continuar_combate = false;
                     break;
@@ -59,7 +59,12 @@ public class Combate {
                 usarItem();
                 verificarVitoria();
                 jogador.hp -= adversario.ataque;
-                verificarVitoria();
+                if(verificarVitoria()) {
+                    continuar_combate = false;
+                    Menu_Derrota menu_derrota = new Menu_Derrota();
+                    menu_derrota.exibir_Menu_Derrota();
+                    break;
+                }
                 break;
             case "3":
                 jogador.status();
@@ -95,10 +100,10 @@ public class Combate {
                 System.out.println("Você usou uma poção de ataque e aumentou seu ataque em 2!");
                 jogador.ataque += 2; // Aumenta o ataque do jogador
                 inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Poção de ataque"));
-            } else if(nomeItem.equals("Armadura")) {
-                System.out.println("Você vestiu a armadura e aumentou sua defesa!");
+            } else if(nomeItem.equals("Escudo")) {
+                System.out.println("Você usou o escudo ele aumentou sua defesa!");
                 jogador.defesa += 2; // Aumenta a defesa do jogador
-                inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Armadura"));
+                inventario.getItens().removeIf(item -> item.getNome().equalsIgnoreCase("Escudo"));
             }
             
             else if(nomeItem.equals("Espada")) {
