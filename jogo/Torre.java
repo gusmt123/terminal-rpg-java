@@ -29,7 +29,7 @@ public class Torre extends Local{
                 break;
             case "2":
                 System.out.println("Você se deparou com um dragão! Prepare-se para lutar!");
-                Personagem dragao = new Personagem(30, 7, 5, "Dragão");
+                Criatura dragao = new Criatura("Dragão", 1);
                 Combate combate = new Combate(inventario, jogador, dragao);
                 combate.menu_Combate();
                 break;

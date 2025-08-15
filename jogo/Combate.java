@@ -44,6 +44,7 @@ public class Combate {
                 adversario.hp -= (dano / Math.floor((jogador.defesa / 2)));
                 if(verificarVitoria()) {
                     continuar_combate = false;
+                    jogador.ganharXp(10 * adversario.nivel);
                     break;
                 }
                 jogador.hp -= adversario.ataque;

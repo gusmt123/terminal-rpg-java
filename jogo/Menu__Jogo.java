@@ -43,8 +43,9 @@ public class Menu__Jogo {
             System.out.println("2. Ver onde estou");
             System.out.println("3. Interagir local");
             System.out.println("4. Locomover");
-            System.out.println("5. Salvar");
-            System.out.println("6. Sair");
+            System.out.println("5. Ver nível e XP");
+            System.out.println("6. Salvar");
+            System.out.println("7. Sair");
 
 
             String opcao;
@@ -73,11 +74,16 @@ public class Menu__Jogo {
                     break;
 
                 case "5":
+                    System.out.println("Nível: " + jogador.getNivel());
+                    System.out.println("XP: " + jogador.getXp());
+                    break;
+
+                case "6":
                     Gerenciador_Salvar salvador = new Gerenciador_Salvar();
                     salvador.salvar_jogo(jogador, inventario, ((Local) posicao).get_Nome().toLowerCase());
                     break;
 
-                case "6":
+                case "7":
                     System.out.println("Obrigado por jogar!");
                     System.exit(0);
                     break;

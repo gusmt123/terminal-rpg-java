@@ -35,7 +35,7 @@ public class Caverna extends Local {
                 
                 if(monstro_Presente){
                 System.out.println("Você se deparou com um monstro! Prepare-se para lutar!");
-                Personagem monstro = new Personagem(20, 3, 1, "Monstro");
+                Criatura monstro = new Criatura("Monstro", 1);
                 Combate combate = new Combate(inventario, jogador , monstro);
                 combate.menu_Combate();
                 }

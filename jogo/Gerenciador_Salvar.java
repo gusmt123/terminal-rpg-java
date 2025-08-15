@@ -24,6 +24,10 @@ public class Gerenciador_Salvar {
             writer.newLine();
             writer.write(jogador.defesa + "");
             writer.newLine();
+            writer.write(jogador.nivel + "");  // <- ADICIONADO
+            writer.newLine();
+            writer.write(jogador.xp + "");     // <- ADICIONADO
+            writer.newLine();
 
             // Local atual
             writer.write(localAtual);
@@ -48,10 +52,13 @@ public class Gerenciador_Salvar {
             int hp = Integer.parseInt(reader.readLine());
             int ataque = Integer.parseInt(reader.readLine());
             int defesa = Integer.parseInt(reader.readLine());
+            int nivel = Integer.parseInt(reader.readLine()); 
+            int xp = Integer.parseInt(reader.readLine());    
+
 
             String local = reader.readLine();
 
-            Personagem jogador = new Personagem(hp, ataque, defesa, nome);
+            Personagem jogador = new Personagem(nome, hp, ataque, defesa, nivel, xp);
             Inventario inventario = new Inventario();
 
             String linha;

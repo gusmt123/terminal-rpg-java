@@ -95,7 +95,7 @@ public class Menu_Inicial {
         String nome_jogador;
         System.out.println("Digite o seu nome:");
         nome_jogador = scanner.nextLine();
-        jogador = new Personagem(20,5,1,nome_jogador);
+        jogador = new Personagem(nome_jogador,20,5,1, 1, 0);
         Menu__Jogo menu_jogo = new Menu__Jogo(inventario, posicao, jogador);
         menu_jogo.Menu_Jogo();
     }
