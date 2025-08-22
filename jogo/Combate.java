@@ -5,10 +5,11 @@ import java.util.Random;
 
 public class Combate {
     private Inventario inventario;
-    private Personagem jogador, adversario;
+    private Jogador jogador;
+    private Criatura adversario;
     private Random random = new Random();
 
-    public Combate(Inventario inventario, Personagem jogador, Personagem adversario) {
+    public Combate(Inventario inventario, Jogador jogador, Criatura adversario) {
         this.inventario = inventario;
         this.jogador = jogador;
         this.adversario = adversario;

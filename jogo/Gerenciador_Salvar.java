@@ -58,7 +58,7 @@ public class Gerenciador_Salvar {
 
             String local = reader.readLine();
 
-            Personagem jogador = new Personagem(nome, hp, ataque, defesa, nivel, xp);
+            Jogador jogador = new Jogador(nome, hp, ataque, defesa, nivel, xp);
             Inventario inventario = new Inventario();
 
             String linha;
@@ -79,11 +79,11 @@ public class Gerenciador_Salvar {
 
     // Classe auxiliar para agrupar os dados do jogo carregado
     public static class JogoSalvo {
-        public Personagem jogador;
+        public Jogador jogador;
         public Inventario inventario;
         public String localAtual;
 
-        public JogoSalvo(Personagem jogador, Inventario inventario, String localAtual) {
+        public JogoSalvo(Jogador jogador, Inventario inventario, String localAtual) {
             this.jogador = jogador;
             this.inventario = inventario;
             this.localAtual = localAtual;

@@ -6,10 +6,10 @@ public class Caverna extends Local {
 
     private Scanner scanner = new Scanner(System.in);
     private Inventario inventario;
-    private Personagem jogador;
+    private Jogador jogador;
     private boolean monstro_Presente = true;
 
-    public Caverna(String nome, Inventario inventario, Personagem jogador){ 
+    public Caverna(String nome, Inventario inventario, Jogador jogador){ 
         super(nome);
         this.inventario = inventario;
         this.jogador = jogador;

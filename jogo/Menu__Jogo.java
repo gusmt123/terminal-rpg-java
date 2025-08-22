@@ -7,9 +7,9 @@ public class Menu__Jogo {
     private Inventario inventario;
     private Posicao posicao;
     private Scanner scanner;
-    private Personagem jogador;
+    private Jogador jogador;
 
-    public Menu__Jogo(Inventario inventario, Posicao posicao, Personagem jogador)
+    public Menu__Jogo(Inventario inventario, Posicao posicao, Jogador jogador)
     {
         scanner = new Scanner(System.in);
         this.inventario = inventario;
@@ -30,6 +30,9 @@ public class Menu__Jogo {
         } else if (localizacao.equals("torre")) {
             posicao = new Torre("Torre", inventario, jogador);
         }
+        else if (localizacao.equals("deserto")) {
+            posicao = new Deserto("Deserto", inventario, jogador);
+        } 
     }
 
     public void Menu_Jogo()
@@ -44,8 +47,9 @@ public class Menu__Jogo {
             System.out.println("3. Interagir local");
             System.out.println("4. Locomover");
             System.out.println("5. Ver nível e XP");
-            System.out.println("6. Salvar");
-            System.out.println("7. Sair");
+            System.out.println("6. Visualizar dinheiro");
+            System.out.println("7. Salvar");
+            System.out.println("8. Sair");
 
 
             String opcao;
@@ -79,15 +83,18 @@ public class Menu__Jogo {
                     break;
 
                 case "6":
+                    System.out.println("Dinheiro: " + jogador.getDinheiro());
+                    break;
+
+                case "7":
                     Gerenciador_Salvar salvador = new Gerenciador_Salvar();
                     salvador.salvar_jogo(jogador, inventario, ((Local) posicao).get_Nome().toLowerCase());
                     break;
 
-                case "7":
+                case "8":
                     System.out.println("Obrigado por jogar!");
                     System.exit(0);
                     break;
-
                 default:
                     System.out.println("Digite uma opção válida");
                     break;

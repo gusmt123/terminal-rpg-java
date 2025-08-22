@@ -2,12 +2,12 @@ package jogo;
 
 
 public class Personagem {
-    public String nome;
-    public int hp;
-    public int ataque;
-    public int defesa;
-    public int xp;
-    public int nivel;
+    protected String nome;
+    protected int hp;
+    protected int ataque;
+    protected int defesa;
+    protected int xp;
+    protected int nivel;
 
     public Personagem(String nome,int hp, int ataque, int defesa, int nivel, int xp){
         this.hp = hp;

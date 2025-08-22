@@ -54,6 +54,7 @@ public class Floresta extends Local {
         System.out.println("1. Castelo");
         System.out.println("2. Caverna");
         System.out.println("3. Vilarejo");
+        System.out.println("4. Deserto");
 
         String opcao = scanner.nextLine();
 
@@ -69,7 +70,9 @@ public class Floresta extends Local {
             case "3":
                 System.out.println("Você se locomoveu para o Vilarejo.");
                 return "vilarejo";
-            
+            case "4":
+                System.out.println("Você se locomoveu para o Deserto.");
+                return "deserto";
             default:
                 System.out.println("Opção inválida. Tente novamente.");
                 return locomover();

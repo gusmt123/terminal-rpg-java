@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Torre extends Local{
     
-    private Personagem jogador;
+    private Jogador jogador;
     private Inventario inventario;
     private Scanner scanner = new Scanner(System.in);
 
-    public Torre(String nome, Inventario inventario, Personagem jogador){
+    public Torre(String nome, Inventario inventario, Jogador jogador){
         super(nome);
         this.inventario = inventario;
         this.jogador = jogador;
