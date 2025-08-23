@@ -74,7 +74,7 @@ public class Menu_Inicial {
                 posicao = new Caverna("Caverna", dados.inventario, dados.jogador);
                 break;
             case "vilarejo":
-                posicao = new Vilarejo("Vilarejo", dados.inventario);
+                posicao = new Vilarejo("Vilarejo", dados.inventario, dados.jogador);
                 break;
             case "torre":
                 posicao = new Torre("Torre", dados.inventario, dados.jogador);

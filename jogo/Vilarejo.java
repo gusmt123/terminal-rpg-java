@@ -6,10 +6,12 @@ public class Vilarejo extends Local implements Posicao{
 
     private Inventario inventario;
     private Scanner scanner = new Scanner(System.in);
+    private Jogador jogador;
 
-    public Vilarejo(String nome, Inventario inventario){
+    public Vilarejo(String nome, Inventario inventario, Jogador jogador){
         super(nome);
         this.inventario = inventario;
+        this.jogador = jogador;
     }
 
 
@@ -18,6 +20,7 @@ public class Vilarejo extends Local implements Posicao{
         System.out.println("Escolha uma opção a seguir:");
         System.out.println("1. Conversar com um aldeão");
         System.out.println("2. Procurar por itens no vilarejo");
+        System.out.println("3. Comprar itens na loja do vilarejo");
         
         String opcao = scanner.nextLine();
 
@@ -28,6 +31,10 @@ public class Vilarejo extends Local implements Posicao{
             case "2":
                 inventario.adicionarItem(new Item("Poção de ataque"));
                 System.out.println("Você encontrou uma poção de ataque no vilarejo!");
+                break;
+            case "3":
+                Loja loja = new Loja(inventario, jogador);
+                loja.comprar();
                 break;
             default:
                 break;
